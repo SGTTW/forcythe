@@ -72,7 +72,7 @@ const Testimonials = () => {
                 height="30px"
                 objectFit="contain"
               />
-              
+            
             </Box>
           ))}
         </Flex>
