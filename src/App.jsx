@@ -3,6 +3,7 @@ import Carousel from "./components/Carousel";
 import HeroSection from "./components/HeroSection";
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Testimonials from "./components/Testimonials";
 function App() {
   return (
     <>
@@ -10,6 +11,7 @@ function App() {
         <Navbar />
         <HeroSection />
         <Carousel />
+        <Testimonials />
         <Routes>
           <Route path="/" element={<Navbar />} />
           {/* {/* <Route path="/" element={<HeroSection />} /> */}
