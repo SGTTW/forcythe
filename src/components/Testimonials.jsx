@@ -1,7 +1,14 @@
-import React from "react";
-import { Box, Container, Text, Flex, Image, Heading } from "@chakra-ui/react";
-
-// Import your logo images
+ 
+import React, { useState, useEffect } from "react";
+import {
+  Box,
+  Container,
+  Text,
+  Flex,
+  Image,
+  Heading,
+  Grid,
+} from "@chakra-ui/react";
 import john from "../assets/Images/john.svg";
 import executiveProCeo from "../assets/Images/executive-pro-ceo.svg";
 import edwin from "../assets/Images/edwin.svg";
@@ -13,103 +20,127 @@ import stacaiLogo from "../assets/Images/stacaiLogo.svg";
 import iwariaLogo from "../assets/Images/iwariaLogo.svg";
 import BeaupreneurLogo from "../assets/Images/BeaupreneurLogo.svg";
 
-const Testimonials = () => {
-  const testimonial = {
+const testimonialsData = [
+  {
     company: "Starks Associate",
     text: "Partnering with Forcythe was like finding a hidden gem. Their genuine interest in our success was palpable, and the continuous support post-launch has been a testament to their commitment. They've become more than a service provider; they're a trusted ally.",
     author: "John, Management",
-    image: "john",
-  };
+    image: john,
+    logo: starksLogo,
+  },
+  {
+    company: "Executive Pros",
+    text: "The team at Forcythe truly understands our needs and helped us scale to new heights. We couldn't have asked for better partners.",
+    author: "ExecutivePro CEO",
+    image: executiveProCeo,
+    logo: ExecutiveProsLogo,
+  },
+  {
+    company: "Stac.ai",
+    text: "Our collaboration with Forcythe has been transformative, helping us innovate faster and deliver more value.",
+    author: "Edwin, Founder",
+    image: edwin,
+    logo: stacaiLogo,
+  },
+  {
+    company: "Iwaria",
+    text: "Forcythe's dedication and expertise have made a significant difference in our journey. Highly recommended.",
+    author: "Iwaria Founder",
+    image: iwaria,
+    logo: iwariaLogo,
+  },
+  {
+    company: "Beaupreneur",
+    text: "Exceptional service, exceptional results. Forcythe has been a game-changer for us.",
+    author: "Christina, CEO",
+    image: christina,
+    logo: BeaupreneurLogo,
+  },
+];
+
+const Testimonials = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
+    }, 5000);  
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <Box bg="#0B1120" color="white" py={16}>
-      <Container maxW="7xl" px={{ base: 4, md: 6 }}>
-        {/* Heading Section */}
-        <Box textAlign="center" mb={12}>
-          <Heading
-            fontSize={{ base: "2xl", md: "4xl" }}
-            fontWeight="bold"
-            mb={4}
-          >
-            Discover the{" "}
-            <Text as="span" color="blue.400">
-              transformative stories
-            </Text>{" "}
-            of
-          </Heading>
-          <Heading fontSize={{ base: "2xl", md: "4xl" }} fontWeight="bold">
-            startups that scaled new heights with us
-          </Heading>
-        </Box>
+    <Box bg="gray.900" color="white" py={10}>
+      <Container maxW="7xl">
+        {/* Heading */}
+        <Heading
+          textAlign="center"
+          mb={6}
+          fontSize={{ base: "3xl", md: "5xl" }}
+        >
+          Discover the{" "}
+          <Text as="span" color="blue.300">
+            transformative stories
+          </Text>{" "}
+          of startups that scaled new heights with us
+        </Heading>
 
         {/* Logo Bar */}
         <Flex
-          justify="space-between"
-          align="center"
+          justifyContent="space-around"
+          gap={6}
           mb={8}
-          bg="rgba(255, 255, 255, 0.05)"
-          p={4}
-          borderRadius="full"
-          overflow="hidden"
+          border={"1px solid blue"}
+          rounded={"full"}
         >
-          {[
-            starksLogo,
-            ExecutiveProsLogo,
-            stacaiLogo,
-            iwariaLogo,
-            BeaupreneurLogo,
-          ].map((logo, index) => (
+          {testimonialsData.map((testimonial, index) => (
             <Box
               key={index}
-              mx={2}
-              flex="1"
-              display="flex"
-              justifyContent="center"
+              p={2}
+              borderRadius="full"
+              bg={index === activeIndex ? "blue.300" : "transparent"}
+              transition="background-color 0.3s"
             >
               <Image
-                src={logo}
-                alt={`Partner logo ${index + 1}`}
-                height="30px"
-                objectFit="contain"
+                src={testimonial.logo}
+                boxSize={16}
+                alt={`${testimonial.company} Logo`}
               />
-            
             </Box>
           ))}
         </Flex>
 
-        {/* Testimonial Card */}
-        <Flex
-          bg="rgba(255, 255, 255, 0.05)"
-          borderRadius="xl"
-          overflow="hidden"
-          direction={{ base: "column", md: "row" }}
-          maxW="4xl"
-          mx="auto"
+        {/* Testimonial Content */}
+        <Grid
+          templateColumns={{ base: "1fr", lg: "1fr 1fr" }}
+          alignItems="center"
+          gap={8}
+          mt={6}
         >
-          {/* Text Content */}
-          <Box p={8} flex="1" bg="rgba(0, 0, 0, 0.3)">
-            <Text fontSize="lg" fontWeight="medium" mb={6} color="gray.300">
-              {testimonial.text}
+          {/* Left: Text Content */}
+          <Box>
+            <Text fontWeight="bold" fontSize="xl" mb={2}>
+              {testimonialsData[activeIndex].company}
             </Text>
-            <Box>
-              <Text fontWeight="bold">{testimonial.company}</Text>
-              <Text fontSize="sm" color="gray.400">
-                {testimonial.author}
-              </Text>
-            </Box>
+            <Text fontSize="lg" mb={4}>
+              {testimonialsData[activeIndex].text}
+            </Text>
+            <Text fontSize="md" fontStyle="italic">
+              {testimonialsData[activeIndex].author}
+            </Text>
           </Box>
 
-          {/* Image */}
-          <Box flex="1" maxW={{ base: "100%", md: "50%" }}>
+          {/* Right: Image */}
+          <Box>
             <Image
-              src={john}
-              alt="Testimonial author"
-              w="100%"
-              h="100%"
+              src={testimonialsData[activeIndex].image}
+              borderRadius="md"
+              alt={testimonialsData[activeIndex].author}
+              w="50%"
+              h="auto"
               objectFit="cover"
             />
           </Box>
-        </Flex>
+        </Grid>
       </Container>
     </Box>
   );

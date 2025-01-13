@@ -9,7 +9,8 @@ import {
   IconButton,
   VStack,
 } from "@chakra-ui/react";
-import { RxHamburgerMenu, RxCross1 } from "react-icons/rx";
+import { HiOutlineMenuAlt2 } from "react-icons/hi";
+
 import logo from "../assets/Images/forcythe logo.svg";
 
 const Navbar = () => {
@@ -86,7 +87,7 @@ const Navbar = () => {
             <Text
               key={item}
               color="white"
-              fontSize="sm"
+              fontSize="md"
               fontWeight="medium"
               cursor="pointer"
               transition="color 0.2s ease"
@@ -105,7 +106,7 @@ const Navbar = () => {
           rounded="full"
           px={6}
           py={5}
-          fontSize="sm"
+          fontSize="md"
           fontWeight="medium"
           _active={{ bg: "whiteAlpha.800" }}
           borderBottom={"1px dashed #333"}
@@ -122,7 +123,7 @@ const Navbar = () => {
           variant="ghost"
           color="white"
           aria-label={isOpen ? "Close menu" : "Open menu"}
-          icon={isOpen ? <RxCross1 /> : <RxHamburgerMenu />}
+          icon={isOpen ? <HiOutlineMenuAlt2 /> : <HiOutlineMenuAlt2 />}
           _hover={{ bg: "whiteAlpha.200" }}
         />
 
@@ -131,9 +132,9 @@ const Navbar = () => {
           display={{ base: isOpen ? "block" : "none", md: "none" }}
           position="fixed"
           top="90px"
-          right="20px"
+          right="1px"
           width="60%"
-          height="80vh"
+          height="auto"
           bg="rgba(2, 6, 23, 0.98)"
           transition="all 0.3s ease"
           borderRadius={"30px"}

@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Box, Flex, Heading, Text, Button, Container } from "@chakra-ui/react";
 import { Typewriter } from "react-simple-typewriter";
+import { AiFillCaretRight } from "react-icons/ai";
+
 import worldMap from "../assets/Images/worldMap.png";
 
 const HeroSection = () => {
   const [showSubheading, setShowSubheading] = useState(false);
 
-  // Calculate total time for the first typewriter sequence
-  // "We build " (9 chars) + "products" (8 chars) + " that shape a better future" (26 chars)
-  // Total 43 chars * (1000/70) ms per char ≈ 614ms for typing
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowSubheading(true);
-    }, 1000); // Set to slightly longer than typing time to ensure main heading is visible
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -25,7 +24,7 @@ const HeroSection = () => {
       py={{ base: 16, md: 24 }}
       position="relative"
       overflow="hidden"
-      minHeight="100vh"
+      minHeight="auto"
     >
       <Container
         maxW="7xl"
@@ -39,25 +38,32 @@ const HeroSection = () => {
           align={{ base: "flex-start", md: "flex-start", lg: "flex-start" }}
           textAlign={{ base: "left", md: "left", lg: "left" }}
           justify="center"
-          bg="rgba(0, 0, 0, 0.6)"
-          borderRadius="lg"
+          // bg="rgba(0, 0, 0, 0.6)"
+          bg={"rgba(0, 0, 0, 0.5)"}
+          borderRadius="30px"
           py={12}
           px={6}
           height="400px"
+          mt={{ base: "9px", md: "initial" }}
         >
           {/* Main Heading */}
           <Heading
             as="h1"
             fontSize={{ base: "3xl", md: "5xl" }}
-            fontWeight="bold"
+            fontWeight="md"
             lineHeight="short"
             mb={4}
             minHeight="120px"
           >
-            <Typewriter words={["We build "]} cursor={false} typeSpeed={70} />
+            <Typewriter words={["We build  "]} cursor={false} typeSpeed={70} />
             <Text as="span" color="blue.400">
-              <Typewriter words={["products"]} cursor={false} typeSpeed={70} />
+              <Typewriter
+                words={[" products "]}
+                cursor={false}
+                typeSpeed={70}
+              />
             </Text>
+
             <Typewriter
               words={[" that shape a better future"]}
               cursor={false}
@@ -85,9 +91,24 @@ const HeroSection = () => {
               </Text>
             )}
           </Box>
-
-          {/* Rest of your code remains the same */}
-          {/* Button and Success in Motion sections... */}
+          {/* Book a Call Button */}
+          <Button
+            display={{ base: "flex", md: "flex" }}
+            bg="white"
+            color="black"
+            rounded="full"
+            px={6}
+            py={5}
+            fontSize="md"
+            fontWeight="medium"
+            _active={{ bg: "whiteAlpha.800" }}
+            borderBottom={"1px dashed #333"}
+            borderLeft={"1px dashed #333"}
+            _hover={{ bg: "blue", color: "white", border: "none" }}
+            rightIcon={<AiFillCaretRight />}
+          >
+            Book a Call
+          </Button>
         </Flex>
 
         <Heading
@@ -96,6 +117,7 @@ const HeroSection = () => {
           lineHeight="short"
           my={4}
           textAlign={{ base: "center", lg: "center" }}
+          mt={{ base: "2rem", md: "3rem " }}
         >
           Success in{" "}
           <Text as="span" color="blue.400">
@@ -118,6 +140,7 @@ const HeroSection = () => {
         bgSize="cover"
         opacity={0.2}
         zIndex={0}
+        height={"auto"}
       />
     </Box>
   );
