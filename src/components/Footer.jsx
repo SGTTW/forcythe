@@ -22,7 +22,7 @@ import instagram from "../assets/Images/instagram.svg";
 import x from "../assets/Images/x.svg";
 import linkedin from "../assets/Images/linkedin.svg";
 import youtube from "../assets/Images/youtube.svg";
-import podcast from "../assets/Images/icon.svg";
+import podcast from "../assets/Images/Icon.svg";
 const Footer = () => {
   return (
     <Box bg="#0A192F" color="white" py={16}>

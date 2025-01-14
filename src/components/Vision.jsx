@@ -32,8 +32,6 @@ const Vision = () => {
     },
     {
       title: "Crafting the blueprint for success",
-      description:
-        "Transform your ideas into visually compelling designs that resonate with your audience.",
       image: design,
       description:
         "Design is more than aesthetics, it’s about creating user experiences that resonate and convert. Our design experts shape your vision into a stunning reality.",
@@ -93,7 +91,7 @@ const Vision = () => {
             <Tabs
               variant="unstyled"
               onChange={(index) => {
-                setCurrentTab(index);  
+                setCurrentTab(index);
               }}
             >
               <TabList
@@ -169,7 +167,7 @@ const Vision = () => {
             mt={{ base: "3rem", md: "initial" }}
           >
             <Image
-              src={tabData[currentTab].image}  
+              src={tabData[currentTab].image}
               alt="Illustration"
               boxSize={{ base: "full", md: "400px" }}
             />
