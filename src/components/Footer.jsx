@@ -2,10 +2,9 @@ import React from "react";
 import {
   Box,
   Container,
-  Stack,
   Text,
   Input,
-  Button,
+  InputGroup,
   Checkbox,
   VStack,
   HStack,
@@ -13,6 +12,7 @@ import {
   Grid,
   GridItem,
   Flex,
+  InputRightAddon,
 } from "@chakra-ui/react";
 
 import logo from "../assets/Images/forcythe logo.svg";
@@ -31,25 +31,36 @@ const Footer = () => {
           {/* Email Subscription Section */}
           <GridItem>
             <VStack align="flex-start" spacing={4}>
-              <Input
-                placeholder="Your Email Address"
-                bg="transparent"
-                border="1px solid"
-                borderColor="gray.600"
-                _placeholder={{ color: "gray.400" }}
-                size="lg"
-                maxW="300px"
-              />
-              <Button
-                bg="white"
-                color="#0A192F"
-                size="lg"
-                px={8}
-                _hover={{ bg: "gray.200" }}
+              <InputGroup size="lg" maxW="380px">
+                <Input
+                  placeholder="Your Email Address"
+                  bg="transparent"
+                  border="1px solid"
+                  borderColor="gray.600"
+                  _placeholder={{ color: "gray.400" }}
+                  height="40px"
+                  borderRadius="30px"
+                />
+                <InputRightAddon
+                  color="black"
+                  bg="white"
+                  height="40px"
+                  borderRadius="0 30px 30px 0"
+                  border={"none"}
+                >
+                  Subscribe
+                </InputRightAddon>
+              </InputGroup>
+
+              <Checkbox
+                colorScheme="blue"
+                defaultIsUnchecked
+                sx={{
+                  span: {
+                    borderRadius: "50%",
+                  },
+                }}
               >
-                Subscribe
-              </Button>
-              <Checkbox colorScheme="blue" defaultIsUnchecked>
                 <Text fontSize="sm">
                   I agree to receive other notifications from Forcythe
                 </Text>
@@ -60,18 +71,14 @@ const Footer = () => {
           {/* Center Content */}
           <GridItem>
             <VStack align="flex-start" spacing={6}>
-              <Image
-                src={logo} // Update with your logo path
-                alt="Forcythe"
-                h="30px"
-              />
+              <Image src={logo} alt="Forcythe" h="30px" />
               <Text color="gray.400" lineHeight="tall">
                 We are the growth company for businesses looking to scale. We
                 are dedicated to transforming businesses with bespoke digital
                 solutions that drive growth.
               </Text>
               <HStack spacing={4}>
-                {/* Replace with your social media icon images */}
+                {/* social media icon images */}
                 <Image src={facebook} alt="Facebook" h="20px" />
                 <Image src={instagram} alt="Instagram" h="20px" />
                 <Image src={x} alt="Twitter" h="20px" />

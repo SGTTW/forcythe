@@ -1,8 +1,5 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import React from "react";
-import { Box, Image, Flex } from "@chakra-ui/react";
-import Slider from "react-slick";
+import React, { useState } from "react";
+import { Box, Flex, keyframes, Image } from "@chakra-ui/react";
 import activity from "../assets/Images/activity.svg";
 import africaFund from "../assets/Images/africaFund.svg";
 import execpro from "../assets/Images/exec-pro.svg";
@@ -10,71 +7,88 @@ import phone from "../assets/Images/phone.svg";
 import stac from "../assets/Images/stac.svg";
 import starks from "../assets/Images/starks.svg";
 
-const Carousel = () => {
-  const topSliderSettings = {
-    infinite: true,
-    speed: 3000,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    cssEase: "linear",
-    arrows: false,
-    pauseOnHover: false,
-  };
+const moveLeftToRight = keyframes`
+  from { transform: translateX(-16.67%); }
+  to { transform: translateX(0%); }
+`;
 
-  const bottomSliderSettings = {
-    ...topSliderSettings,
-    rtl: true,
-    speed: 4000,
-  };
- 
-  const images = [activity, africaFund, execpro, phone, stac, starks];
+const moveRightToLeft = keyframes`
+  from { transform: translateX(0%); }
+  to { transform: translateX(-16.67%); }
+`;
+
+const Carousel = () => {
+  const [items] = useState([
+    activity,
+    africaFund,
+    execpro,
+    phone,
+    stac,
+    starks,
+  ]);
+  const duplicatedItems = [...items, ...items];
 
   return (
-    <Flex
-      direction="column"
-      height="auto"
-      width="100%"
-      position="relative"
-      justify="space-between"
-      py={8}
-      bgColor={"black"}
-    >
-      {/* Top Slider */}
-      <Box flex="1" mb={4}>
-        <Slider {...topSliderSettings}>
-          {images.map((image, index) => (
-            <Box key={index} px={2}>
-              <Image
-                src={image}
-                alt={`Image ${index + 1}`}
-                height="5xl"
-                width="100%"
-                objectFit="contain"
-              />
-            </Box>
-          ))}
-        </Slider>
-      </Box>
+    <Box mx="auto" overflow="hidden" position="relative" bg={"black"} py={8}>
+      {/* Top Row - Moving Left to Right */}
+      <Flex
+        position="relative"
+        width="600%"
+        mb={8}
+        sx={{
+          animation: `${moveLeftToRight} 30s linear infinite`,
+        }}
+      >
+        {duplicatedItems.map((item, index) => (
+          <Box
+            key={`top-${index}`}
+            width="300px"
+            height="200px"
+            mx={4}
+            borderRadius="lg"
+            flexShrink={0}
+            overflow="hidden"
+          >
+            <Image
+              src={item}
+              alt={`Top Row Image ${index + 1}`}
+              width="100%"
+              height="100%"
+              objectFit="cover"
+            />
+          </Box>
+        ))}
+      </Flex>
 
-      {/* Bottom Slider */}
-      <Box flex="1">
-        <Slider {...bottomSliderSettings}>
-          {images.map((image, index) => (
-            <Box key={index} px={2}>
-              <Image
-                src={image}
-                alt={`Image ${index + 1}`}
-                height="150px"
-                width="100%"
-                objectFit="contain"
-              />
-            </Box>
-          ))}
-        </Slider>
-      </Box>
-    </Flex>
+      {/* Bottom Row - Moving Right to Left */}
+      <Flex
+        position="relative"
+        width="600%"
+        sx={{
+          animation: `${moveRightToLeft} 30s linear infinite`,
+        }}
+      >
+        {duplicatedItems.map((item, index) => (
+          <Box
+            key={`bottom-${index}`}
+            width="300px"
+            height="200px"
+            mx={4}
+            borderRadius="lg"
+            flexShrink={0}
+            overflow="hidden"
+          >
+            <Image
+              src={item}
+              alt={`Bottom Row Image ${index + 1}`}
+              width="100%"
+              height="100%"
+              objectFit="cover"
+            />
+          </Box>
+        ))}
+      </Flex>
+    </Box>
   );
 };
 

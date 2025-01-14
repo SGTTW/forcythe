@@ -13,10 +13,24 @@ import {
 import ai from "../assets/Images/ai.webp";
 import crypto from "../assets/Images/crypto.webp";
 import crytpoAsset from "../assets/Images/crypto-asset.webp";
-import logo from "../assets/Images/forcythe logo.svg";
 
 const BlogCard = ({ title, date, author, category, image }) => (
-  <Box>
+  <Box
+    _hover={{
+      transform: "translateY(-8px)",
+      borderleft: "2px solid",
+      borderBottom: "2px solid",
+      borderBottomRadius: "30px",
+      borderColor: "blue.400",
+      "& > div:first-of-type img": {
+        transform: "scale(1)",
+      },
+      "& > div:last-of-type": {
+        transform: "scale(0.98)",
+      },
+      px: "8px",
+    }}
+  >
     <Box position="relative" mb={4}>
       <Image
         src={image}
@@ -27,10 +41,21 @@ const BlogCard = ({ title, date, author, category, image }) => (
         borderRadius="lg"
       />
     </Box>
-    <VStack align="flex-start" spacing={2}>
-      <HStack spacing={2}>
+    <VStack
+      align="flex-start"
+      spacing={2}
+      pl={4}
+      borderLeft="1px solid"
+      // height="24%"
+      borderColor="white"
+      mb={5}
+    >
+      <Text color="white" fontSize="sm" fontWeight="bold">
+        {category}
+      </Text>
+      <HStack spacing={1}>
         <Text color="gray.400" fontSize="sm">
-          {category}
+          {author}
         </Text>
         <Text color="gray.400" fontSize="sm">
           •
@@ -39,12 +64,9 @@ const BlogCard = ({ title, date, author, category, image }) => (
           {date}
         </Text>
       </HStack>
-      <Heading size="md" color="white">
+      <Heading size="md" color="white" mt={2}>
         {title}
       </Heading>
-      <Text color="gray.400" fontSize="sm">
-        {author}
-      </Text>
     </VStack>
   </Box>
 );
@@ -56,21 +78,21 @@ const Blog = () => {
       author: "The Reformist",
       date: "May 29th, 2024",
       category: "Blog",
-      image: ai, // Replace with actual image path
+      image: ai,
     },
     {
       title: "Cryptocurrency vs Tokens",
       author: "The Reformist",
       date: "May 29th, 2024",
       category: "Blog",
-      image: crypto, // Replace with actual image path
+      image: crypto,
     },
     {
       title: "Cryptocurrency and Crypto asset",
       author: "The Reformist",
       date: "May 29th, 2024",
       category: "Blog",
-      image: crytpoAsset, // Replace with actual image path
+      image: crytpoAsset,
     },
   ];
 
@@ -83,7 +105,7 @@ const Blog = () => {
           mb={10}
           display={{ base: "block", md: "flex" }}
         >
-          <Heading color="white" size="2xl">
+          <Heading color="white" fontSize="4xl" fontWeight={"md"}>
             Read our articles, news and product blog
           </Heading>
 
@@ -112,6 +134,7 @@ const Blog = () => {
             <BlogCard key={index} {...post} />
           ))}
         </SimpleGrid>
+
         {/* Ready to Scale */}
         <VStack
           spacing={4}
@@ -168,38 +191,3 @@ const Blog = () => {
 };
 
 export default Blog;
-
-// <VStack display={"flex"} justifyContent={"center"} align={"center"}>
-//   <Heading textAlign={"center"} mt={"2rem"} color={"white"}>
-//     <Text as="span" color={"blue.400"}>
-//       Ready to Scale?
-//     </Text>
-
-//     <Text as="span">
-//       {" "}
-//       Join successful brands that chose us as their
-//     </Text>
-//     <Text as="span" color={"blue.400"}>
-//       {" "}
-//       growth accelerator
-//     </Text>
-//     {/* Visit Blog Button */}
-//     <Button
-//       variant="outline"
-//       color="black"
-//       bg={"white"}
-//       fontSize="sm"
-//       fontWeight="medium"
-//       borderRadius="full"
-//       px={6}
-//       py={5}
-//       _active={{ bg: "whiteAlpha.800" }}
-//       borderBottom={"1px dashed #333"}
-//       borderLeft={"1px dashed #333"}
-//       _hover={{ bg: "blue", color: "white", border: "none" }}
-//       mt={{ base: "2rem", md: "inherit" }}
-//     >
-//       Visit Blog
-//     </Button>
-//   </Heading>
-// </VStack>

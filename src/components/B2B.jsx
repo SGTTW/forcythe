@@ -30,7 +30,7 @@ const B2B = () => {
           rounded="lg"
           shadow="lg"
           w={{ base: "100%", md: "30%" }}
-          _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
+          _hover={{ transform: "scale(1.05)" }}
           transition="all 0.3s ease"
         >
           <VStack spacing={4} align="start">
@@ -52,7 +52,7 @@ const B2B = () => {
           rounded="lg"
           shadow="lg"
           w={{ base: "100%", md: "30%" }}
-          _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
+          _hover={{transform: "scale(1.05)" }}
           transition="all 0.3s ease"
         >
           <VStack spacing={4} align="start">
@@ -74,7 +74,7 @@ const B2B = () => {
           rounded="lg"
           shadow="lg"
           w={{ base: "100%", md: "30%" }}
-          _hover={{ bg: "blue.600", transform: "scale(1.05)" }}
+          _hover={{  transform: "scale(1.05)" }}
           transition="all 0.3s ease"
         >
           <VStack spacing={4} align="start">

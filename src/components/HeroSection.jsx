@@ -115,9 +115,9 @@ const HeroSection = () => {
           as="h6"
           fontWeight="bold"
           lineHeight="short"
-          my={4}
+     
           textAlign={{ base: "center", lg: "center" }}
-          mt={{ base: "2rem", md: "3rem " }}
+          mt={{ base: "2rem", md: "5rem " }}
         >
           Success in{" "}
           <Text as="span" color="blue.400">

@@ -1,138 +1,3 @@
-// import React from "react";
-// import {
-//   Box,
-//   Flex,
-//   Text,
-//   Button,
-//   Tabs,
-//   TabList,
-//   Tab,
-//   VStack,
-//   Image,
-//   Container,
-// } from "@chakra-ui/react";
-// import idea from "../assets/Images/camera-man.svg";
-
-// const Vision = () => {
-//   return (
-//     <Box
-//       as="section"
-//       bg="rgba(2, 6, 23, 1)"
-//       color="white"
-//       w="100%"
-//       position="relative"
-//       left="50%"
-//       right="50%"
-//       marginLeft="-50vw"
-//       marginRight="-50vw"
-//       py={16}
-//     >
-//       <Container maxW="7xl" px={{ base: 4, md: 6 }}>
-//         <Flex
-//           align="center"
-//           justify="space-between"
-//           direction={{ base: "column", md: "row" }}
-//         >
-//           {/* Left Section */}
-//           <VStack align="flex-start" spacing={6} maxW="lg">
-//             <Text fontSize="3xl" fontWeight="bold" lineHeight="short">
-//               From{" "}
-//               <Text as="span" color="blue.400">
-//                 Spark
-//               </Text>{" "}
-//               to{" "}
-//               <Text as="span" color="blue.400">
-//                 Spotlight
-//               </Text>
-//               : we take you every step of the way to success.
-//             </Text>
-
-//             {/* Tabs */}
-//             <Tabs variant="unstyled">
-//               <TabList
-//                 border="1px solid white"
-//                 borderRadius="full"
-//                 px={2}
-//                 py={1}
-//                 display="flex"
-//                 justifyContent="space-between"
-//                 maxW="full"
-//               >
-//                 {["Idea", "Design", "Develop", "Launch"].map((tab) => (
-//                   <Tab
-//                     key={tab}
-//                     _selected={{
-//                       bg: "blue.400",
-//                       color: "white",
-//                       borderRadius: "full",
-//                     }}
-//                     px={4}
-//                     py={2}
-//                     fontWeight="medium"
-//                   >
-//                     {tab}
-//                   </Tab>
-//                 ))}
-//               </TabList>
-//             </Tabs>
-
-//             {/* Description */}
-//             <Text fontSize="lg" opacity={0.8}>
-//               Nurture Your Idea into a Blueprint for Success with our strategic
-//               insights and industry expertise. Your vision is unique, let's shape
-//               it.
-//             </Text>
-
-//             {/* Call-to-Action Button */}
-//             <Button
-//               bg="white"
-//               color="black"
-//               rounded="full"
-//               px={6}
-//               py={5}
-//               fontSize="sm"
-//               fontWeight="medium"
-//               _hover={{ bg: "blue.400", color: "white", border: "none" }}
-//               borderBottom="1px dashed #333"
-//               borderLeft="1px dashed #333"
-//             >
-//               Book a Call
-//             </Button>
-//           </VStack>
-
-//           {/* Right Section */}
-//           <Box
-//             display={{ base: "none", md: "block" }}
-//             flexShrink={0}
-//             ml={{ md: 8 }}
-//           >
-//             <Image
-//               src={idea}
-//               alt="Illustration"
-//               boxSize={{ base: "full", md: "400px" }}
-//             />
-//           </Box>
-//         </Flex>
-//       </Container>
-//     </Box>
-//   );
-// };
-
-// export default Vision;
-
-// -------
-// <Text fontSize="3xl" fontWeight="bold" lineHeight="short">
-//   From{" "}
-//   <Text as="span" color="blue.400">
-//     Spark
-//   </Text>{" "}
-//   to{" "}
-//   <Text as="span" color="blue.400">
-//     Spotlight
-//   </Text>
-//   : we take you every step of the way to success.
-// </Text>
-
 import React, { useState } from "react";
 import {
   Box,
@@ -228,7 +93,7 @@ const Vision = () => {
             <Tabs
               variant="unstyled"
               onChange={(index) => {
-                setCurrentTab(index); // Updates the current tab index
+                setCurrentTab(index);  
               }}
             >
               <TabList
@@ -304,7 +169,7 @@ const Vision = () => {
             mt={{ base: "3rem", md: "initial" }}
           >
             <Image
-              src={tabData[currentTab].image} // Dynamically updates image
+              src={tabData[currentTab].image}  
               alt="Illustration"
               boxSize={{ base: "full", md: "400px" }}
             />

@@ -1,4 +1,3 @@
- 
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -64,7 +63,7 @@ const Testimonials = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonialsData.length);
-    }, 5000);  
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
@@ -102,7 +101,7 @@ const Testimonials = () => {
             >
               <Image
                 src={testimonial.logo}
-                boxSize={16}
+                boxSize={10}
                 alt={`${testimonial.company} Logo`}
               />
             </Box>
@@ -115,6 +114,10 @@ const Testimonials = () => {
           alignItems="center"
           gap={8}
           mt={6}
+          p={6}
+          width={{ base: "auto", md: "50%" }}
+          rounded={"30px"}
+          bg="blue.300"
         >
           {/* Left: Text Content */}
           <Box>
@@ -136,7 +139,8 @@ const Testimonials = () => {
               borderRadius="md"
               alt={testimonialsData[activeIndex].author}
               w="50%"
-              h="auto"
+              // minH="80%"
+              h={"auto"}
               objectFit="cover"
             />
           </Box>
